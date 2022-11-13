@@ -1,0 +1,41 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator erd {
+  provider = "prisma-erd-generator"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Movie {
+  id              String   @id @default(uuid())
+  title           String
+  releaseDate     DateTime
+  lengthInMinutes Int
+  coverUrl        String
+
+  moviegenderR MovieGenderR[]
+}
+
+model Gender {
+  id   String @id @default(uuid())
+  name String
+
+  moviegenderR MovieGenderR[]
+}
+
+model MovieGenderR {
+  id       String @id @default(uuid())
+  genderId String
+  movieId  String
+
+  gender Gender @relation(fields: [genderId], references: [id])
+  movie  Movie  @relation(fields: [movieId], references: [id])
+}
