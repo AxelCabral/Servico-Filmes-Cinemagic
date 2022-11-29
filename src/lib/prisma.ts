@@ -4,4 +4,4 @@ export const prisma = new PrismaClient({
     log: ['query'],
 })
 
-//Singleton pattern -> todas as instâncias utilizaram essa mesma conexão
+//Singleton pattern -> todas as instâncias utilizaram essa mesma instância
