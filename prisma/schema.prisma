@@ -15,11 +15,16 @@ datasource db {
 }
 
 model Movie {
-  id              String   @id @default(uuid())
-  title           String
-  releaseDate     DateTime
-  lengthInMinutes Int
-  coverUrl        String
+  id                 String   @id @default(uuid())
+  title              String
+  releaseDate        DateTime
+  lengthInMinutes    Int
+  coverUrl           String
+  synopsis           String
+  parentalRatingType String
+  dubbedVersion      Boolean
+  subtitledVersion   Boolean
+  originalLanguage   String
 
   moviegenderR MovieGenderR[]
 }
